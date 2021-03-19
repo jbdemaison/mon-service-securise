@@ -45,7 +45,7 @@ textarea {
   background: white;
 }
 
-.item-selectionnable, .item-selectionne {
+.synthese-item-selectionnable, .synthese-item-selectionne {
   background: white;
   padding: 0.5em;
   margin: 0.5em 0 0;
@@ -60,10 +60,7 @@ textarea {
 .details-item {
   box-sizing: border-box;
   width: 100%;
-  margin-top: 1em;
-  padding: 0.5em;
-
-  position: absolute;
+  padding: 1em 0 2em 0.5em;
 }
 
 .grille-risques {

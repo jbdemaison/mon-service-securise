@@ -13,7 +13,9 @@ var RM = RM || {};
       const prefixeItem = contexte.nomItem + "-";
       const div = RM.creeConteneur(contexte.nomItem);
       div.id = prefixeItem + itemCourant.id;
-      div.appendChild(document.createTextNode(itemCourant.nom));
+      const divSynthese = RM.creeConteneur("synthese-" + contexte.nomItem);
+      div.appendChild(divSynthese);
+      divSynthese.appendChild(document.createTextNode(itemCourant.nom));
 
       const input = document.createElement("input");
       input.classList.add("ajoute-item");
@@ -22,12 +24,12 @@ var RM = RM || {};
       input.addEventListener("click", function (e) {
         contexte.listeArrivee.push(itemCourant);
 
-        const idItem = parseInt(e.target.parentNode.id.replace(prefixeItem, ""));
+        const idItem = parseInt(e.target.parentNode.parentNode.id.replace(prefixeItem, ""));
         contexte.listeDepart.supprimeItemAvecId(idItem);
 
         metsAJourContenus();
       });
-      div.appendChild(input);
+      divSynthese.appendChild(input);
 
       if (contexte.itemEditable) {
         div.appendChild(callBackCreationConteneurDetails(itemCourant));

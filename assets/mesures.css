@@ -2,12 +2,8 @@
   color: #2b8564;
 }
 
-.onglet-mesures .item-selectionnable, .onglet-mesures .item-selectionne {
+.onglet-mesures .synthese-item-selectionnable, .onglet-mesures .synthese-item-selectionne {
   border: solid 1px #2b8564;
-}
-
-.onglet-mesures .item-selectionne {
-  margin-bottom: 130px;
 }
 
 .onglet-mesures input[type="submit"] {

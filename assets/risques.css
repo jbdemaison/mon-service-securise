@@ -2,12 +2,8 @@
   color: #df7116;
 }
 
-.onglet-risques .item-selectionnable, .onglet-risques .item-selectionne {
+.onglet-risques .synthese-item-selectionnable, .onglet-risques .synthese-item-selectionne {
   border: solid 1px #df7116;
-}
-
-.onglet-risques .item-selectionne {
-  margin-bottom: 110px;
 }
 
 .onglet-risques input[type="submit"] {
