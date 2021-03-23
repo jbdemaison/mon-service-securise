@@ -19,7 +19,7 @@ var RM = RM || {};
       RGS de mon service numérique
     </p>
 
-    <a href="/demarrage_saisie.html">Démarrer mon homologation ></a>
+    <a class="bouton" href="/demarrage_saisie.html">Démarrer mon homologation ></a>
   </div>
 
   <div class="informations-complementaires bandeau-bleu">
@@ -52,11 +52,11 @@ var RM = RM || {};
   <a href="/saisie.html">Passer cette étape</a>
 </div>
 <div class="question">
-  <label for="nom-service">Appellation du service</label>
+  <h1>Appellation du service</h1>
   <input id="nom-service" type="text">
 </div>
 <div class="question">
-  <div>Type du service</div>
+  <h1>Type du service</h1>
   <input id="type-service-1" name="type-service" type="radio" value="Site internet">
   <label for="type-service-1">Site internet</label><br/>
   <input id="type-service-1" name="type-service" type="radio" value="Application mobile">
@@ -65,7 +65,7 @@ var RM = RM || {};
   <label for="type-service-1">API</label><br/>
 </div>
 <div class="question">
-  <div>Type d'utilisateurs</div>
+  <h1>Type d'utilisateurs</h1>
   <input id="type-utilisateurs-1" type="checkbox" value="Visiteurs sans compte">
   <label for="type-utilisateurs-1">Visiteurs sans compte</label><br/>
   <input id="type-utilisateurs-1" type="checkbox" value="Visiteurs avec un compte">
@@ -76,7 +76,7 @@ var RM = RM || {};
   <label for="type-utilisateurs-1">Autre</label><br/>
 </div>
 <div class="question">
-  <div>Type du service</div>
+  <h1>Type du service</h1>
   <input id="avancement-service-1" name="avancement-service" type="radio" value="Le service n'est pas encore développé">
   <label for="avancement-service-1">Le service n'est pas encore développé</label><br/>
   <input id="avancement-service-1" name="avancement-service" type="radio" value="Le service est en cours de développement">
@@ -85,7 +85,7 @@ var RM = RM || {};
   <label for="avancement-service-1">Le service est en ligne</label><br/>
 </div>
 <div class="pied">
-  <a href="/saisie.html">Continuer</a>
+  <a class="bouton" href="/saisie.html">Continuer</a>
 </div>
     `;
   };
