@@ -1,9 +1,9 @@
 body {
-  width: 900px;
+  width: 1000px;
   margin: 0 auto;
   font-family: "Marianne";
-  background: #f9f9f9;
   padding: 0;
+  color: #444;
 }
 
 textarea {
@@ -82,3 +82,16 @@ textarea {
   position: absolute;
 }
 
+
+.texte-bleu {
+  color: #283573;
+}
+
+.texte-rouge {
+  color: #e01021;
+}
+
+.beta {
+  font-size: 0.5em;
+  color: #999;
+}

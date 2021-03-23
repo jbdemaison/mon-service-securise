@@ -1,9 +1,21 @@
-.entete {
-  border-bottom: solid 1px #999;
+header {
+  padding-bottom: 2em;
+  border-bottom: solid 1px #e7e7e7;
+}
+
+header h1 {
+  margin: 0.67em 0 0;
+}
+
+header p, footer {
+  margin: 0;
+  font-size: 0.8em;
+  font-weight: lighter;
 }
 
 footer {
-  border-top: solid 1px #999;
+  padding: 2em 0;
+  border-top: solid 1px #e7e7e7;
 }
 
 .tab {
