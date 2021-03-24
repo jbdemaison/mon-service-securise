@@ -5,10 +5,12 @@ var RM = RM || {};
   var mesuresPossibles = [{
     id: 1,
     nom: "Chiffrement",
+    applicationMesure: false,
     risquesConcernes: []
   }, {
     id: 2,
     nom: "Formation utilisateurs",
+    applicationMesure: false,
     risquesConcernes: []
   }];
 
@@ -68,6 +70,23 @@ var RM = RM || {};
 
     const risquesPourMesure = creeConteneurRisquesPourMesure(itemCourant, menacesSelectionnees);
     grille.appendChild(risquesPourMesure);
+
+    const selectApplicationMesure = document.createElement("select");
+    selectApplicationMesure.id = "application-mesure-" + itemCourant.id;
+    [
+      { libelle: "Mesure appliquée", value: true },
+      { libelle: "Mesure à traiter", value: false }
+    ].forEach(function (donneesOption) {
+      const option = document.createElement("option");
+      option.value = donneesOption.value.toString();
+      option.selected = (itemCourant.applicationMesure === donneesOption.value);
+      option.appendChild(document.createTextNode(donneesOption.libelle));
+      selectApplicationMesure.appendChild(option);
+    });
+    selectApplicationMesure.addEventListener("change", function (e) {
+      itemCourant.applicationMesure = eval(e.target.value);
+    });
+    grille.appendChild(selectApplicationMesure);
 
     return details;
   }

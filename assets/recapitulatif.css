@@ -1,0 +1,10 @@
+.grille-items-recapitulatif {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-gap: 5px;
+}
+
+.risque, .mesures-associees {
+  padding: 0.5em;
+  background: #ccc;
+}
