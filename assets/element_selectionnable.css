@@ -1,0 +1,24 @@
+.item-selectionnable {
+  position: relative;
+}
+
+.description-longue-item-selectionnable {
+/*
+
+  top: -4em;
+  left: 20em;
+  */
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 29em;
+
+  width: 20em;
+  padding: 1em;
+  border: solid 1px #e7e7e7;
+  border-radius: 5px;
+  background: #fcfcfd;
+  font-size: 0.7em;
+  font-weight: lighter;
+  color: #999;
+}

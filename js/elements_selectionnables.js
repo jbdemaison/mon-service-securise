@@ -2,7 +2,6 @@ var RM = RM || {};
 
 (function (racine) {
 
-
   const ajouteConteneurItemsSelectionnables = function (
     idConteneur,
     idListeItemsSelectionnables, titreConteneurItemsSelectionnables, itemsSelectionnables,
@@ -16,6 +15,20 @@ var RM = RM || {};
       const divSynthese = RM.creeConteneur("synthese-" + contexte.nomItem);
       div.appendChild(divSynthese);
       divSynthese.appendChild(document.createTextNode(itemCourant.nom));
+
+      const divDescriptionLongue = RM.creeConteneur("description-longue-" + contexte.nomItem);
+      divDescriptionLongue.classList.add("invisible");
+      divDescriptionLongue.appendChild(document.createTextNode(itemCourant.descriptionLongue));
+      div.appendChild(divDescriptionLongue);
+
+      divSynthese.addEventListener("pointerenter", function () {
+        if (itemCourant.descriptionLongue && !contexte.itemEditable) {
+          divDescriptionLongue.classList.remove("invisible");
+        }
+      });
+      divSynthese.addEventListener("pointerleave", function () {
+        divDescriptionLongue.classList.add("invisible");
+      });
 
       const input = document.createElement("input");
       input.classList.add("ajoute-item");
