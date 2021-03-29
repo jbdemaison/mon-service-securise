@@ -1,3 +1,12 @@
+.recapitulatif {
+  margin: 0 5em;
+}
+
+.recapitulatif h2 {
+  font-size: 1.4em;
+  color: #283573;
+}
+
 .grille-items-recapitulatif {
   display: grid;
   grid-template-columns: 50% 50%;

@@ -29,7 +29,7 @@ footer {
   cursor: default;
 }
 
-.etape {
+.tab .etape {
   background: #ccc;
   border-radius: 100%;
   color: white;
@@ -45,7 +45,7 @@ footer {
   background: #283573;
 }
 
-.titre-etape {
+.tab .titre-etape {
   color: #ccc;
   padding: 0 3em 0 0.5em;
 }

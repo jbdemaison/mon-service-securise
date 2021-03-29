@@ -40,54 +40,14 @@ var RM = RM || {};
 
   const creePageDemarrageSaisie = function () {
     const main = document.getElementsByTagName("main")[0];
-    main.innerHTML = `
-<div class="entete">
-  <div class="titre">
-    <h2>Créer un nouveau dossier d'homologation</h2>
-    <h3>
-      Vous pouvez renseigner ici quelques premières informations, qui pourront
-      vous aider pour la suite de la saisie.
-      </h3>
-  </div>
-  <a href="/saisie.html">Passer cette étape</a>
-</div>
-<div class="question">
-  <h1>Appellation du service</h1>
-  <input id="nom-service" type="text">
-</div>
-<div class="question">
-  <h1>Type du service</h1>
-  <input id="type-service-1" name="type-service" type="radio" value="Site internet">
-  <label for="type-service-1">Site internet</label><br/>
-  <input id="type-service-1" name="type-service" type="radio" value="Application mobile">
-  <label for="type-service-1">Application mobile</label><br/>
-  <input id="type-service-1" name="type-service" type="radio" value="API">
-  <label for="type-service-1">API</label><br/>
-</div>
-<div class="question">
-  <h1>Type d'utilisateurs</h1>
-  <input id="type-utilisateurs-1" type="checkbox" value="Visiteurs sans compte">
-  <label for="type-utilisateurs-1">Visiteurs sans compte</label><br/>
-  <input id="type-utilisateurs-1" type="checkbox" value="Visiteurs avec un compte">
-  <label for="type-utilisateurs-1">Visiteurs avec un compte</label><br/>
-  <input id="type-utilisateurs-1" type="checkbox" value="Administrateurs">
-  <label for="type-utilisateurs-1">Administrateurs</label><br/>
-  <input id="type-utilisateurs-1" type="checkbox" value="Autre">
-  <label for="type-utilisateurs-1">Autre</label><br/>
-</div>
-<div class="question">
-  <h1>Type du service</h1>
-  <input id="avancement-service-1" name="avancement-service" type="radio" value="Le service n'est pas encore développé">
-  <label for="avancement-service-1">Le service n'est pas encore développé</label><br/>
-  <input id="avancement-service-1" name="avancement-service" type="radio" value="Le service est en cours de développement">
-  <label for="avancement-service-1">Le service est en cours de développement</label><br/>
-  <input id="avancement-service-1" name="avancement-service" type="radio" value="Le service est en ligne">
-  <label for="avancement-service-1">Le service est en ligne</label><br/>
-</div>
-<div class="pied">
-  <a class="bouton" href="/saisie.html">Continuer</a>
-</div>
-    `;
+    const etapes = [{
+      titre: "À propos de vous",
+      callbackCreationElements: RM.creeQuestionsBeneficiaire
+    }, {
+      titre: "À propos de votre service",
+      callbackCreationElements: RM.creeQuestionsService
+    }];
+    main.appendChild(RM.creeConteneurQuestionnaire(etapes));
   };
 
   const demarre = function () {
@@ -97,8 +57,8 @@ var RM = RM || {};
     RM.ajouteEntete();
 
     const idPage = identifiantPage();
-    if (idPage === "page-accueil") { creePageAccueil() }
-    if (idPage === "page-demarrage-saisie") { creePageDemarrageSaisie() }
+    if (idPage === "page-accueil") { creePageAccueil(); }
+    if (idPage === "page-demarrage-saisie") { creePageDemarrageSaisie(); }
 
     if (idPage === "") {
       RM.creeOnglets([
