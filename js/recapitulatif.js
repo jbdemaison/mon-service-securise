@@ -1,6 +1,7 @@
 var RM = RM || {};
 
 (function (racine) {
+
   const textePourNatureService = function (natureService) {
     const texteCorrespondant = {
       "Site internet": "un site internet",
@@ -180,6 +181,48 @@ var RM = RM || {};
       return grille;
     };
 
+    const creeConteneurRecapitulatifRisques = function () {
+      const recapitulatifRisques = RM.creeConteneur("liste-items", "Les principaux risques identifiés");
+      const h3 = document.createElement("h3");
+      h3.appendChild(document.createTextNode("Ces risques sont présentés de manière synthétique en annexe"));
+      recapitulatifRisques.appendChild(h3);
+
+      menacesSelectionnees.forEach(function (menace) {
+        const risque = RM.creeConteneur("item");
+        risque.appendChild(document.createTextNode(menace.nom));
+        recapitulatifRisques.appendChild(risque);
+      });
+
+      return recapitulatifRisques;
+    };
+
+    const creeConteneurRecapitulatifMesures = function () {
+      const recapitulatifMesures = RM.creeConteneur(
+        "liste-items", "Les principales mesures de sécurité identifiées");
+      const h3 = document.createElement("h3");
+      h3.appendChild(document.createTextNode("Ces mesures sont présentées et détaillées en annexe"));
+      recapitulatifMesures.appendChild(h3);
+
+      mesuresSelectionnees.forEach(function (mesure) {
+        const divMesure = RM.creeConteneur("item");
+
+        const spanNomMesure = document.createElement("span");
+        spanNomMesure.classList.add("nom-mesure");
+        spanNomMesure.appendChild(document.createTextNode(mesure.nom));
+        divMesure.appendChild(spanNomMesure);
+
+        const spanApplicationMesure = document.createElement("span");
+        spanApplicationMesure.classList.add("application-mesure");
+        const texteApplicationMesure = mesure.applicationMesure ? "Mesure appliquée" : "Mesure à traiter";
+        spanApplicationMesure.appendChild(document.createTextNode(texteApplicationMesure));
+        divMesure.appendChild(spanApplicationMesure);
+
+        recapitulatifMesures.appendChild(divMesure);
+      });
+
+      return recapitulatifMesures;
+    };
+
     const metsAJourRecapitulatif = function (e) {
       const conteneur = e.target;
       const recapitulatif = RM.creeConteneur("recapitulatif");
@@ -188,21 +231,8 @@ var RM = RM || {};
       conteneur.appendChild(recapitulatif);
 
       recapitulatif.appendChild(creeConteneurAvantRisques());
-
-//      ajouteRubrique("Risques identifiés et traités", conteneur,
-//        function (_, mesures) { return mesures.length > 0 && mesures[0].applicationMesure; },
-//        function (risque, mesure) { return mesure.risquesConcernes.includes(risque.id) && mesure.applicationMesure; }
-//      );
-//
-//      ajouteRubrique("Risques identifiés et à traiter", conteneur,
-//        function (_, mesures) { return mesures.length > 0 && !mesures[0].applicationMesure; },
-//        function (risque, mesure) { return mesure.risquesConcernes.includes(risque.id) && !mesure.applicationMesure; }
-//      );
-//
-//      ajouteRubrique("Risques résiduels", conteneur,
-//        function (_, mesures) { return mesures.length === 0; },
-//        function (risque, mesure) { return mesure.risquesConcernes.includes(risque.id); }
-//      );
+      recapitulatif.appendChild(creeConteneurRecapitulatifRisques());
+      recapitulatif.appendChild(creeConteneurRecapitulatifMesures());
     };
 
     const conteneur = document.getElementById(idConteneur);

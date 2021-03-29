@@ -3,8 +3,19 @@
 }
 
 .recapitulatif h2 {
+  margin-top: 2em;
   font-size: 1.4em;
   color: #283573;
+}
+
+.recapitulatif .liste-items h2 {
+  margin-bottom: 0;
+}
+
+.recapitulatif .liste-items h3 {
+  margin: 0;
+  font-size: 1em;
+  font-weight: normal;
 }
 
 .grille-items-recapitulatif {
@@ -13,7 +24,18 @@
   grid-gap: 5px;
 }
 
-.risque, .mesures-associees {
-  padding: 0.5em;
-  background: #ccc;
+.recapitulatif .item {
+  background: #eee;
+  border-radius: 5px;
+  padding: 1em 3em;
+  margin: 1em 0;
+
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.recapitulatif .application-mesure {
+  float: right;
+
+  font-weight: 100;
 }
