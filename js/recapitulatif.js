@@ -223,6 +223,20 @@ var RM = RM || {};
       return recapitulatifMesures;
     };
 
+    const creeConteneurFinRecapitulatif = function () {
+      const fin = RM.creeConteneur("fin-recapitulatif");
+      fin.innerHTML=`
+<p><b>
+Le dossier d'homologation de "${infosDossier.nomService}" a été généré depuis
+la plateforme MonServiceSecurise proposée par l'agence nationale de la sécurité
+des systèmes d'information.
+</b></p>
+<div class="logo-anssi"></div>
+      `;
+
+      return fin;
+    };
+
     const metsAJourRecapitulatif = function (e) {
       const conteneur = e.target;
       const recapitulatif = RM.creeConteneur("recapitulatif");
@@ -233,6 +247,8 @@ var RM = RM || {};
       recapitulatif.appendChild(creeConteneurAvantRisques());
       recapitulatif.appendChild(creeConteneurRecapitulatifRisques());
       recapitulatif.appendChild(creeConteneurRecapitulatifMesures());
+      // recapitulatif.appendChild(creeConteneurApresMesures());
+      recapitulatif.appendChild(creeConteneurFinRecapitulatif());
     };
 
     const conteneur = document.getElementById(idConteneur);
