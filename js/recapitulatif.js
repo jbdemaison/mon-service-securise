@@ -95,8 +95,8 @@ var RM = RM || {};
 
 <p>
   La décision d'homologation concourt à la conformité réglementaire de votre
-  service vis-à-vis du <br/>
-  RGS 2.0 <br/>
+  service vis-à-vis du <br>
+  RGS 2.0 <br>
   RGPD
 </p>
 
@@ -133,7 +133,7 @@ var RM = RM || {};
   </ul>
 </p>
 <p>
-  Quelques caractéristiques additionnelles : <br/>
+  Quelques caractéristiques additionnelles : <br>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
   tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
   quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
@@ -223,6 +223,52 @@ var RM = RM || {};
       return recapitulatifMesures;
     };
 
+    const creeConteneurApresMesures = function () {
+      const section = RM.creeConteneur("section-recapitulatif");
+      section.innerHTML = `
+<h2>Avis de l'expert cybersécurité</h2>
+<p>Prénom / Nom, responsabilité</p>
+<p>
+  Aux vues des risques identifiés et des mesures mises en œuvre ou à venir,
+  existe-t-il une raison critique de ne pas permettre le lancement du service
+  numérique ?
+</p>
+<p>□ Oui &nbsp; &nbsp; □ Non</p>
+
+<h3>Précision sur la décision</h3>
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<h3>Recommandations en vue de renforcer la sécurité de la solution dans les mois à venir</h3>
+<p>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+  proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+</p>
+
+<h2>Signature du dossier d'homologation</h2>
+<p>
+  Par la signature de ce document, vous attestez avoir pris connaissance des
+  principaux risques de sécurité associés à ${infosDossier.nomService} et des
+  mesures de sécurité prises, et vous validez le lancement du service, dont la
+  sécurité devra être maintenue en continu.
+</p>
+<p>
+  Date | Signature
+</p>
+      `;
+      return section;
+    };
+
     const creeConteneurFinRecapitulatif = function () {
       const fin = RM.creeConteneur("fin-recapitulatif");
       fin.innerHTML=`
@@ -237,6 +283,94 @@ des systèmes d'information.
       return fin;
     };
 
+    const creeConteneurAnnexesAvantRisques = function () {
+      const section = RM.creeConteneur("section-recapitulatif");
+      section.innerHTML = `
+<h2>Annexes</h2>
+
+<h3>Annexe 1 — certificat pouvant être apposé sur votre service</h3>
+<p>
+  "${infosDossier.nomService}" a fait l'objet d'une décision d'homologation de
+  sécurité le ${(new Date()).toLocaleDateString("fr-FR")}, à l'appui d'un
+  dossier élaboré sur la plateforme MonServiceSecurise de l'agence nationale de
+  la sécurité des systèmes d'information.
+</p>
+      `;
+      return section;
+    };
+
+    const creeConteneurAnnexesRisques = function () {
+      const section = RM.creeConteneur("section-recapitulatif");
+
+      const h3 = document.createElement("h3");
+      h3.appendChild(document.createTextNode("Annexe 2 — Les risques identifiés expliqués"));
+      section.appendChild(h3);
+
+      const dl = document.createElement("dl");
+      menacesSelectionnees.forEach(function (menace) {
+        const dt = document.createElement("dt");
+        dt.appendChild(document.createTextNode(menace.nom));
+        dl.appendChild(dt);
+
+        const dd = document.createElement("dd");
+        dd.appendChild(document.createTextNode(menace.descriptionLongue));
+        dl.appendChild(dd);
+      });
+
+      section.appendChild(dl);
+
+      return section;
+    };
+
+    const creeConteneurAnnexesApresRisques = function () {
+      const section = RM.creeConteneur("section-recapitulatif");
+      section.innerHTML = `
+<h3>Annexe 3 — Les mesures de sécurité retenues expliquées</h3>
+<p>
+  TBD
+</p>
+
+<h3>Annexe 4 — Conformité aux textes réglementaires</h3>
+<dl>
+  <dt>RGS</dt>
+  <dl>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+    est laborum.
+  </dl>
+
+  <dt>RGPD</dt>
+  <dl>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+    est laborum.
+  </dl>
+
+  <dt>PSSIE</dt>
+  <dl>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+    veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+    est laborum.
+  </dl>
+
+  <dt>…</dt>
+</dl>
+      `;
+      return section;
+    };
+
     const metsAJourRecapitulatif = function (e) {
       const conteneur = e.target;
       const recapitulatif = RM.creeConteneur("recapitulatif");
@@ -247,8 +381,12 @@ des systèmes d'information.
       recapitulatif.appendChild(creeConteneurAvantRisques());
       recapitulatif.appendChild(creeConteneurRecapitulatifRisques());
       recapitulatif.appendChild(creeConteneurRecapitulatifMesures());
-      // recapitulatif.appendChild(creeConteneurApresMesures());
+      recapitulatif.appendChild(creeConteneurApresMesures());
       recapitulatif.appendChild(creeConteneurFinRecapitulatif());
+      recapitulatif.appendChild(RM.creeConteneur("separation"));
+      recapitulatif.appendChild(creeConteneurAnnexesAvantRisques());
+      recapitulatif.appendChild(creeConteneurAnnexesRisques());
+      recapitulatif.appendChild(creeConteneurAnnexesApresRisques());
     };
 
     const conteneur = document.getElementById(idConteneur);
