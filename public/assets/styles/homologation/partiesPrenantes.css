@@ -5,9 +5,18 @@
     margin-top: 0.6em;
 }
 
-.saisie-identite label {
+.saisie-identite label, .item-ajoute label {
     display: inline-block;
     margin: 0;
     margin-left: 0.1em;
     font-weight: normal;
+}
+
+.item-ajoute {
+    margin-top: 2em;
+    margin-bottom: 0;
+}
+
+.item-ajoute:last-child {
+    margin-bottom: 2em;
 }
