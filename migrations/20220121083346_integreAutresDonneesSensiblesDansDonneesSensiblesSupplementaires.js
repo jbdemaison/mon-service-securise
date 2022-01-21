@@ -1,5 +1,5 @@
 const DESCRIPTION_PAR_DEFAUT_AUTRES_DONNEES_SENSIBLES = 'Autre données sensibles';
-const IDENTIFIANT_AUTRE_DONNEES_SENSIBLES = 'autre';
+const IDENTIFIANT_AUTRES_DONNEES_SENSIBLES = 'autre';
 
 const deplace = (filtreAutresDonneesSensibles, fonctionMiseAJour) => (knex) => knex('homologations')
   .then((lignes) => {
@@ -18,9 +18,8 @@ const deplace = (filtreAutresDonneesSensibles, fonctionMiseAJour) => (knex) => k
 
 const autresDonneesSensiblesGeneriques = ({ donnees }) => (
   donnees.descriptionService
-  && Array.isArray(donnees.descriptionService.donneesCaracterePersonnel)
-  && donnees.descriptionService.donneesCaracterePersonnel
-    .indexOf(IDENTIFIANT_AUTRE_DONNEES_SENSIBLES) !== -1
+    ?.donneesCaracterePersonnel
+    ?.indexOf?.(IDENTIFIANT_AUTRES_DONNEES_SENSIBLES) > -1
 );
 
 const versDonneesSensiblesSpecifiques = (descriptionService) => {
@@ -30,7 +29,7 @@ const versDonneesSensiblesSpecifiques = (descriptionService) => {
   );
 
   descriptionService.donneesCaracterePersonnel = descriptionService.donneesCaracterePersonnel
-    .filter((f) => f !== IDENTIFIANT_AUTRE_DONNEES_SENSIBLES);
+    .filter((f) => f !== IDENTIFIANT_AUTRES_DONNEES_SENSIBLES);
 
   return descriptionService;
 };
@@ -43,7 +42,7 @@ const autresDonneesSensiblesSpecifiques = ({ donnees }) => (
 
 const versDonneesSensiblesGeneriques = (descriptionService) => {
   descriptionService.donneesCaracterePersonnel ||= [];
-  descriptionService.donneesCaracterePersonnel.push(IDENTIFIANT_AUTRE_DONNEES_SENSIBLES);
+  descriptionService.donneesCaracterePersonnel.push(IDENTIFIANT_AUTRES_DONNEES_SENSIBLES);
 
   descriptionService.donneesSensiblesSpecifiques = descriptionService
     .donneesSensiblesSpecifiques
