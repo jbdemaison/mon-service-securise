@@ -5,11 +5,11 @@ const $modaleNouveauContributeur = () => {
     <div class="fermeture-modale"></div>
     <div class="contenu-modale">
       <h1>Ajout de contributeurs</h1>
-      <label for="nouveau-contributeur">Inviter un nouveau contributeur</label>
+      <label for="emailContributeur">Inviter un nouveau contributeur</label>
       <div class="nouveau-contributeur">
         <div class="icone-enveloppe"></div>
-        <input id="nouveau-contributeur"
-               name="nouveau-contributeur"
+        <input id="emailContributeur"
+               name="emailContributeur"
                placeholder="ex. jean.dupont@mail.fr">
       </div>
       <div class="confirmation">
