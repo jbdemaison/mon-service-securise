@@ -4,17 +4,37 @@ bleu marine : #0d4269
 bleu moyen : #456d96
 bleu cliquable : #1b7cc4
 
-gris pâle : #fafbfc
 gris liserés : #ebedf0
-gris moyen: #abb6bf
-gris foncé : #2f3a43
 
 vert pâle : #caefcb
 vert : #1aaf54
 vert foncé : #378348
 jaune pâle : #fff1ce
-jaune : #fcdf41
 orange : #f9b049
 rouge : #ce1b25
+
+NOUVELLES COULEURS - LES PRÉCÉDENTES SONT À MIGRER
+
+Bleus :
+- standard : #08416a
+- cliquable : #0f7ac7
+
+Typographies :
+- foncé : #2f3a43
+- moyen : #929292
+- clair : #abb6bf
+
+Couleurs complémentaires :
+- rouge : #e32630
+- orange : #ff9940
+- jaune : #fcdf41
+- vert : #4cb963
+
+Fonds :
+- gris pâle : #fafbfc
+
+Contours saisie :
+- argent : #cecece
+- or : #fbb13c
 
 */
