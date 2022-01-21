@@ -1279,7 +1279,7 @@ describe('Le serveur MSS', () => {
 
     describe("avec échec de l'authentification de l'utilisateur", () => {
       it('retourne un HTTP 401', (done) => {
-        depotDonnees.utilisateurAuthentifie = () => new Promise((resolve) => resolve(undefined));
+        depotDonnees.utilisateurAuthentifie = () => Promise.resolve(undefined);
 
         verifieRequeteGenereErreurHTTP(
           401, "L'authentification a échoué", {
