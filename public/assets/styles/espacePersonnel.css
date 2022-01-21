@@ -12,15 +12,31 @@
 }
 
 .homologation {
+  height: 12em;
   padding: 2em;
 
   border: solid 1px #ebedf0;
   border-radius: 5px;
   background: white;
+}
 
-  color: #1b7cc4;
+.homologation.existante {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  color: #2f3a43;
+}
+
+.homologation p {
+  margin: 0.5em;
+
+  font-size: 0.8em;
+}
+
+.titre-homologation {
+  font-size: 1.5em;
   font-weight: bold;
-  text-decoration: none;
 }
 
 .homologation:hover {
@@ -28,9 +44,26 @@
   background: #1b7cc401;
 }
 
-.homologation.existante {
-  font-size: 1.5em;
-  color: #2f3a43;
+.pastilles-contributeurs {
+  display: flex;
+  justify-content: center;
+}
+
+.ajout-contributeur {
+  cursor: pointer;
+
+  width: 1.8em;
+  height: 1.8em;
+
+  background-image: url(../images/icone_plus_pastille_bleue.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.nouvelle.homologation {
+  color: #1b7cc4;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 .nouvelle.homologation .icone-ajout {
@@ -42,4 +75,52 @@
   background-image: url(../images/icone_plus_pastille_grise.svg);
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+.contenu-modale {
+  display: flex;
+  flex-direction: column;
+  padding: 0 5em;
+}
+
+.contenu-modale h1 {
+  align-self: center;
+}
+
+.nouveau-contributeur {
+  display: flex;
+  align-items: center;
+  margin-top: 1em;
+}
+
+.icone-enveloppe {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 1em;
+
+  background-image: url(../images/icone_enveloppe.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.contenu-modale input {
+  flex: auto;
+
+  margin: 0;
+  padding: 1em;
+  border: solid 1px #ebedf0;
+  border-radius: 3px;
+
+  font-size: 0.9em;
+}
+
+.contenu-modale .confirmation {
+  display: flex;
+  justify-content: flex-end;
+
+  margin-top: 2em;
+}
+
+.confirmation .bouton {
+  margin: 0;
 }
