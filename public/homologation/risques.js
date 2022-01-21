@@ -3,6 +3,7 @@ import { brancheAjoutItem, peupleListeItems } from '../modules/saisieListeItems.
 import texteHTML from '../modules/texteHTML.js';
 
 import $saisieRisqueSpecifique from '../modules/elementsDom/saisieRisqueSpecifique.js';
+import brancheModale from '../modules/interactions/brancheModale.js';
 
 import {
   brancheComportementSaisieNiveauGravite,
@@ -13,19 +14,6 @@ $(() => {
   let indexMaxRisquesSpecifiques = 0;
 
   const NIVEAUX_GRAVITE = JSON.parse($('#donnees-referentiel-niveaux-gravite-risque').text());
-
-  const ajouteInformationsModales = () => {
-    $('.information').click((eInformation) => {
-      $('body').css('overflow', 'hidden');
-      $('.rideau', $(eInformation.target)).css('display', 'flex');
-
-      $('.fermeture-modale', $(eInformation.target)).click((eFermeture) => {
-        eFermeture.stopPropagation();
-        $('.rideau', $(eInformation.target)).css('display', '');
-        $('body').css('overflow', '');
-      });
-    });
-  };
 
   const ajouteZoneSaisieCommentairePourRisque = ($r, nom) => {
     const $lien = $('a.informations-additionnelles', $r);
@@ -63,7 +51,7 @@ $(() => {
     peupleListeItems(...params, zoneSaisieRisqueSpecifique)
   );
 
-  ajouteInformationsModales();
+  brancheModale('.information');
   $('.risque').each((_, $r) => {
     brancheComportementSaisieNiveauGravite($r, NIVEAUX_GRAVITE);
     ajouteZoneSaisieCommentairePourRisque($r, `commentaire-${$r.id}`);
