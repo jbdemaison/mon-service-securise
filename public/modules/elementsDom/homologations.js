@@ -11,6 +11,7 @@ const $modaleNouveauContributeur = () => {
         <input id="emailContributeur"
                name="emailContributeur"
                placeholder="ex. jean.dupont@mail.fr">
+        <input id="idHomologation" name="idHomologation" type="hidden">
       </div>
       <div class="confirmation">
         <a class="bouton" id="nouveau-contributeur">Envoyer</a>
@@ -30,7 +31,7 @@ const $homologationExistante = (donneesHomologation, classeNouveauContributeur) 
   <div class="contributeurs">
     <p>Contributeurs</p>
     <div class="pastilles-contributeurs">
-      <div class="${classeNouveauContributeur}"></div>
+      <div class="${classeNouveauContributeur}" data-id-homologation="${donneesHomologation.id}"></div>
     </div>
   </div>
 </a>

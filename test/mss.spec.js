@@ -1291,4 +1291,39 @@ describe('Le serveur MSS', () => {
       });
     });
   });
+
+  describe('quand requête POST sur `/api/autorisation`', () => {
+    const utilisateur = { id: '999', genereToken: () => 'un token', accepteCGU: () => true };
+
+    beforeEach(() => {
+      depotDonnees.utilisateurAvecEmail = () => Promise.resolve(utilisateur);
+      depotDonnees.ajouteContributeurAHomologation = () => Promise.resolve();
+    });
+
+    it("vérifie que l'utilisateur est authentifié", (done) => {
+      verifieRequeteExigeAcceptationCGU({
+        method: 'post',
+        url: 'http://localhost:1234/api/autorisation',
+      }, done);
+    });
+
+    it("demande au dépôt de données d'ajouter l'autorisation", (done) => {
+      depotDonnees.ajouteContributeurAHomologation = (idContributeur, idHomologation) => {
+        expect(utilisateur.id).to.equal('999');
+        expect(idContributeur).to.equal('999');
+        expect(idHomologation).to.equal('123');
+        return Promise.resolve();
+      };
+
+      axios.post('http://localhost:1234/api/autorisation', {
+        emailContributeur: 'jean.dupont@mail.fr',
+        idHomologation: '123',
+      })
+        .then((reponse) => {
+          expect(reponse.status).to.be(200);
+          done();
+        })
+        .catch(done);
+    });
+  });
 });

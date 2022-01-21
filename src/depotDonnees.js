@@ -200,6 +200,8 @@ const creeDepot = (config = {}) => {
 
   const utilisateurExiste = (id) => utilisateur(id).then((u) => !!u);
 
+  const { utilisateurAvecEmail } = adaptateurPersistance;
+
   const metsAJourMotDePasse = (idUtilisateur, motDePasse) => (
     bcrypt.hash(motDePasse, 10)
       .then((hash) => adaptateurPersistance.metsAJourUtilisateur(
@@ -242,10 +244,13 @@ const creeDepot = (config = {}) => {
   const accesAutorise = (idUtilisateur, idHomologation) => autorisations(idUtilisateur)
     .then((as) => as.some((a) => a.idHomologation === idHomologation));
 
+  const ajouteContributeurAHomologation = () => Promise.resolve();
+
   return {
     accesAutorise,
     ajouteAvisExpertCyberAHomologation,
     ajouteCaracteristiquesAHomologation,
+    ajouteContributeurAHomologation,
     ajouteDescriptionServiceAHomologation,
     ajouteMesureGeneraleAHomologation,
     ajoutePartiesPrenantesAHomologation,
@@ -267,6 +272,7 @@ const creeDepot = (config = {}) => {
     utilisateurAFinaliser,
     utilisateurAuthentifie,
     utilisateurExiste,
+    utilisateurAvecEmail,
     valideAcceptationCGUPourUtilisateur,
   };
 };

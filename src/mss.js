@@ -493,6 +493,15 @@ const creeServeur = (depotDonnees, middleware, referentiel, adaptateurMail,
       .catch(suite);
   });
 
+  app.post('/api/autorisation', middleware.verificationAcceptationCGU, (requete, reponse, suite) => {
+    const { emailContributeur, idHomologation } = requete.body;
+
+    depotDonnees.utilisateurAvecEmail(emailContributeur)
+      .then((u) => depotDonnees.ajouteContributeurAHomologation(u.id, idHomologation))
+      .then(() => reponse.send(''))
+      .catch(suite);
+  });
+
   app.use('/statique', express.static('public'));
 
   const ecoute = (port, succes) => {
