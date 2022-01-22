@@ -3,6 +3,7 @@ const expect = require('expect.js');
 
 const {
   ErreurEmailManquant,
+  ErreurModele,
   ErreurNomServiceDejaExistant,
   ErreurNomServiceManquant,
   ErreurUtilisateurExistant,
@@ -1324,6 +1325,18 @@ describe('Le serveur MSS', () => {
           done();
         })
         .catch(done);
+    });
+
+    it('retourne une erreur HTTP 422 si le dépôt a levé une `ErreurModele`', (done) => {
+      depotDonnees.ajouteContributeurAHomologation = () => {
+        throw new ErreurModele('oups');
+      };
+
+      verifieRequeteGenereErreurHTTP(
+        422, 'oups',
+        { method: 'post', url: 'http://localhost:1234/api/autorisation', data: {} },
+        done
+      );
     });
   });
 });

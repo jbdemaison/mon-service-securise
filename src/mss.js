@@ -497,9 +497,12 @@ const creeServeur = (depotDonnees, middleware, referentiel, adaptateurMail,
     const { emailContributeur, idHomologation } = requete.body;
 
     depotDonnees.utilisateurAvecEmail(emailContributeur)
-      .then((u) => depotDonnees.ajouteContributeurAHomologation(u.id, idHomologation))
+      .then((u) => depotDonnees.ajouteContributeurAHomologation(u?.id, idHomologation))
       .then(() => reponse.send(''))
-      .catch(suite);
+      .catch((e) => {
+        if (e instanceof ErreurModele) reponse.status(422).send(e.message);
+        else suite(e);
+      });
   });
 
   app.use('/statique', express.static('public'));
