@@ -14,6 +14,7 @@ describe("L'ensemble des parties prenantes", () => {
       fonctionPiloteProjet: 'Responsable métier',
       expertCybersecurite: 'Anna Dubreuil',
       fonctionExpertCybersecurite: 'RSSI',
+      partiesPrenantes: { hebergement: { nom: 'hébergeur' } },
     });
 
     expect(partiesPrenantes.autoriteHomologation).to.equal('Jean Dupont');
@@ -24,6 +25,7 @@ describe("L'ensemble des parties prenantes", () => {
     expect(partiesPrenantes.fonctionPiloteProjet).to.equal('Responsable métier');
     expect(partiesPrenantes.expertCybersecurite).to.equal('Anna Dubreuil');
     expect(partiesPrenantes.fonctionExpertCybersecurite).to.equal('RSSI');
+    expect(partiesPrenantes.partiesPrenantes.hebergement.nom).to.eql('hébergeur');
 
     expect(partiesPrenantes.toJSON()).to.eql({
       autoriteHomologation: 'Jean Dupont',
@@ -34,6 +36,7 @@ describe("L'ensemble des parties prenantes", () => {
       fonctionPiloteProjet: 'Responsable métier',
       expertCybersecurite: 'Anna Dubreuil',
       fonctionExpertCybersecurite: 'RSSI',
+      partiesPrenantes: { hebergement: { nom: 'hébergeur' } },
     });
   });
 
